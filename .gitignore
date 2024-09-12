@@ -1,5 +1,8 @@
+.venv
+
 gdrive/client_secrets.json
 
 telegram/config.py
 
 telegram/teste.session
+
