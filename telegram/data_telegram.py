@@ -12,11 +12,11 @@ api_hash = config.api_hash
 client = TelegramClient('teste', api_id, api_hash)
 
 # Diretório para salvar as fotos
-save_dir = 'C:\\Users\\sousa\\Documents\\Progamacao\\garagem\\fotos\\11.09.24'
+save_dir = 'C:\\Users\\sousa\\Documents\\Progamacao\\TelGd\\fotos\\10.09.24'
 
 # Data de hoje com fuso horário UTC
-start_date = datetime.datetime(2024, 9, 12, tzinfo=pytz.UTC)
-end_date = datetime.datetime(2024, 9, 13, tzinfo=pytz.UTC)
+start_date = datetime.datetime(2024, 9, 11, tzinfo=pytz.UTC)
+end_date = datetime.datetime(2024, 9, 12, tzinfo=pytz.UTC)
 
 async def download_photos(max_messages=100):
     await client.start()
