@@ -10,12 +10,12 @@ api_id = config.api_id
 api_hash = config.api_hash
 client = TelegramClient('teste', api_id, api_hash)
 
-save_dir = 'C:\\Users\\mauri\\Documents\\Progamacao\\Git\\TelGd\\telegram\\fotos\\22.10.24'
+save_dir = 'C:\\Users\\mauri\\Documents\\Progamacao\\Git\\TelGd\\telegram\\fotos\\26.11.24'
 
-start_date = datetime.datetime(2024, 10, 23, tzinfo=pytz.UTC)
-end_date = datetime.datetime(2024, 10, 24, tzinfo=pytz.UTC)
+start_date = datetime.datetime(2024, 11, 27, tzinfo=pytz.UTC)
+end_date = datetime.datetime(2024, 11, 28, tzinfo=pytz.UTC)
 
-async def download_photos(max_messages=1000, expected_photos=70):
+async def download_photos(max_messages=2000, expected_photos=70):
     
     await client.start()
     photos_downloaded = 0
