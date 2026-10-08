@@ -17,4 +17,9 @@ telgd
 tests
 
 fotos
+__pycache__/
+*.pyc
+*.session
+
+
 
