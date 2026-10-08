@@ -6,25 +6,6 @@ import threading
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-HEAD
-api_id = config.api_id
-api_hash = config.api_hash
-client = TelegramClient('teste', api_id, api_hash)
-
-save_dir = 'C:\\Users\\mauri\\Documents\\Progamacao\\Git\\TelGd\\telegram\\fotos\\26.11.24'
-
-start_date = datetime.datetime(2024, 11, 27, tzinfo=pytz.UTC)
-end_date = datetime.datetime(2024, 11, 28, tzinfo=pytz.UTC)
-
-async def download_photos(max_messages=2000, expected_photos=70):
-    
-    await client.start()
-    photos_downloaded = 0
-
-    async for message in client.iter_messages(-1001456659134, limit=max_messages):
-        
-        if message.photo and start_date <= message.date.astimezone(pytz.UTC) <= end_date:
-
 import pytz
 from telethon import TelegramClient
 
@@ -137,7 +118,6 @@ async def baixar_fotos_do_mes(ano, mes, progresso=None):
                 contagem[dia]["existentes"] += 1
                 continue
 
- 87beb49 (Atualização do script data data_telegram.py, e outras melhorias)
             try:
                 await message.download_media(file=caminho)
                 contagem[dia]["novas"] += 1
@@ -148,31 +128,15 @@ async def baixar_fotos_do_mes(ano, mes, progresso=None):
                 contagem[dia]["erros"] += 1
                 print(f"Erro ao baixar foto {message.id}: {e}")
 
-HEAD
-        if photos_downloaded >= expected_photos:
-            break
-
     escrever_log(pasta_mes, ano, mes, contagem, mensagens_lidas, mais_recente, mais_antiga)
-87beb49 (Atualização do script data data_telegram.py, e outras melhorias)
 
     puladas = sum(c["existentes"] for c in contagem.values())
     erros = sum(c["erros"] for c in contagem.values())
     por_dia = {d: c["novas"] for d, c in contagem.items() if c["novas"]}
     return novas, puladas, erros, por_dia
 
-HEAD
-def iniciar_download():
-    
-    try:
-        total_fotos = asyncio.run(download_photos())
-        messagebox.showinfo("Sucesso", f"Download concluído! Total de fotos: {total_fotos}")
-    except Exception as e:
-        messagebox.showerror("Erro", f"Ocorreu um erro: {e}")
-
-
 
 # ------------------------------- INTERFACE --------------------------------
-87beb49 (Atualização do script data data_telegram.py, e outras melhorias)
 janela = tk.Tk()
 janela.title("Downloader de Fotos do Telegram")
 
@@ -180,8 +144,6 @@ hoje = datetime.date.today()
 
 frame = ttk.Frame(janela, padding=15)
 frame.pack()
-
-HEAD
 
 ttk.Label(frame, text="Mês:").grid(row=0, column=0, sticky="e", padx=5, pady=5)
 combo_mes = ttk.Combobox(frame, values=list(range(1, 13)), width=5, state="readonly")
@@ -245,5 +207,4 @@ def iniciar_download():
 
 
 botao.config(command=iniciar_download)
-87beb49 (Atualização do script data data_telegram.py, e outras melhorias)
 janela.mainloop()
